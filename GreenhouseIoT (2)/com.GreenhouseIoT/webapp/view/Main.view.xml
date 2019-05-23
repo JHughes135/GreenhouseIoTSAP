@@ -1,0 +1,48 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:iot="sap.ui.iot.controls" xmlns:iotele="sap.ui.iot.elements" xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="com.GreenhouseIoT.controller.Main" displayBlock="true">
+	<App id="idAppControl">
+		<pages>
+			<Page title="Greenhouse IoT" backgroundDesign="Solid" showFooter="false">
+				<content>
+					<HBox xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" width="100%" id="__hbox0" height="100%" cd:w5g.dt.context="/DYN_ENT_iot_scpiotegi_my_first_environment__envPropertySets">
+						<items>
+							<VBox width="100%" direction="Column" id="vbox0" backgroundDesign="Translucent">
+								<items>
+									<iot:IoTThingList things="{path:'/Things',parameters:{expand:'DYN_ENT_com_sap_appiot_eventtypes__StandardEventType'}}" id="list3" rowSelect="action" action:wiring="\{'rowSelect':\{'targets':[\{'id':'tchart1','action':'doReload','parameters':\{'context':'thing'\}\},\{'id':'tile0','action':'applyFilter','parameters':\{'context':'thing'\}\},\{'id':'tile32','action':'applyFilter','parameters':\{'context':'thing'\}\},\{'id':'chart3','action':'applyFilter','parameters':\{'context':'thing'\}\},\{'id':'list3_1556618046236','action':'doReload','parameters':\{'context':'thing'\}\}]\}\}" thingImageVisible="false">
+										<iot:columns>
+											<iotele:IoTThingListColumnHeader text="Thing Id" id="header0"/>
+											<iotele:IoTThingListColumnHeader text="Thing Name" id="header1"/>
+											<iotele:IoTThingListColumnHeader text="Thing Type" id="header2"/></iot:columns>
+										<iot:things items="{path:'/Things',parameters:{select:'ThingId,ThingName,ThingType'}}">
+											<iotele:IoTThingListElement thingImage="{ThingId}" highSeverity="{DYN_ENT_com_sap_appiot_eventtypes__StandardEventType/High}" mediumSeverity="{DYN_ENT_com_sap_appiot_eventtypes__StandardEventType/Medium}" lowSeverity="{DYN_ENT_com_sap_appiot_eventtypes__StandardEventType/Low}" id="element0">
+												<iotele:cells>
+													<iotele:IoTThingListColumn text="{ThingId}" id="column7"/>
+													<iotele:IoTThingListColumn text="{ThingName}" id="column8"/>
+													<iotele:IoTThingListColumn text="{ThingType}" id="column9"/></iotele:cells>
+											</iotele:IoTThingListElement>
+										</iot:things>
+									</iot:IoTThingList>
+								</items>
+							</VBox>
+							<iot:IoTChart id="tchart1" defaultMeasuredValue="{DYN_ENT_iot_scpiotegi_my_first_environment__envPropertySet/envPropertySet.humidity}{DYN_ENT_iot_scpiotegi_my_first_environment__envPropertySet/envPropertySet.light}{DYN_ENT_iot_scpiotegi_my_first_environment__envPropertySet/envPropertySet.temperature}" headerTitle="" noOfHours="12">
+								<iot:events>
+									<iotele:IoTEventsOnChartElement businessTimeStamp="" severity="0" eventId="" eventDescription="" eventProperty="" eventStatus="" id="element1"/>
+								</iot:events>
+							</iot:IoTChart>
+						</items>
+					</HBox>
+					<iot:IoTMap things="{path:'/Things',parameters:{expand:'DYN_ENT_com_sap_appiot_eventtypes__StandardEventType'}}" id="tmap0" action:w5g.dt.context="/DYN_ENT_iot_scpiotegi_my_first_environment__envPropertySets">
+					    <iot:things>
+					        <iotele:IoTMapElement thingid="{ThingId}" longitude="{Longitude}" latitude="{Latitude}" id="element4">
+					            <iotele:status>
+					                <iotele:IoTStatusElement highSeverity="{DYN_ENT_com_sap_appiot_eventtypes__StandardEventType/High}" mediumSeverity="{DYN_ENT_com_sap_appiot_eventtypes__StandardEventType/Medium}" lowSeverity="{DYN_ENT_com_sap_appiot_eventtypes__StandardEventType/Low}" id="element2_1558606294698"/>
+					            </iotele:status>
+					            <iotele:thingcard>
+					                <iotele:IoTThingCardElement thingCardImage="{ThingId}" SingleThingCardHeaderPosition1="{ThingName}" SingleThingCardHeaderPosition2="{ThingId}" SingleThingCardHeaderPosition3="{ThingType}" SingleThingCardContactInfo1="{BusinessPartnerName}" SingleThingCardContactInfo2="{BPMobilePhoneNumber}" SingleThingCardContactInfo3="{BPLandlinePhoneNumber}" MultiThingCardHeaderPosition1="{ThingName}" MultiThingCardHeaderPosition2="{ThingId}" SingleThingCardEventsVisible="true" SingleThingCardContactsVisible="true" id="element3"/>
+					            </iotele:thingcard></iotele:IoTMapElement>
+					    </iot:things>
+					</iot:IoTMap>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
